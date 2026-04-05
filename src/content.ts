@@ -1,3 +1,10 @@
+import AccueilImg from './assets/images/Accueil.jpg';
+import PourquoiConsulterImg from './assets/images/thread-3426388_1920.jpg';
+import ApprocheImg from './assets/images/celine_huard.jpg';
+import EmdrImg from './assets/images/emdr-therapie.jpg';
+import ParcoursImg from './assets/images/parcours.jpg';
+import InfosPratiquesImg from './assets/images/typewriter-801921_960_720.jpg';
+
 export const siteContent = {
   global: {
     name: "Céline Huard",
@@ -6,7 +13,7 @@ export const siteContent = {
     phone: "06 86 94 93 99",
     address: "Cabinet de consultation\n111 rue Talma\n94400 Vitry-sur-Seine",
     addressDetails: "Sur rendez-vous uniquement",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=11+rue+Talma,+94400+Vitry-sur-Seine",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=111+rue+Talma,+94400+Vitry-sur-Seine",
     adeli: "759312622",
     rpps: "10008855685",
     siret: "844 703 827 00015",
@@ -17,13 +24,13 @@ export const siteContent = {
     badge: "Consultations sur rendez-vous",
     title: "Un malheur n’est jamais une fatalité, c’est un traumatisme qui demande à être métamorphosé. » — Boris Cyrulnik.",
     subtitle: "Psychologue clinicienne depuis 25 ans, je reçois sur rendez-vous des adultes en consultation dans mon cabinet à Vitry-sur-Seine.",
-    image: "./images/Accueil.jpg",
+    image: AccueilImg,
   },
   pourquoiConsulter: {
     title: "Pourquoi consulter ?",
     description: "La consultation est destinée à toute personne qui se trouve face à des difficultés ou des traumatismes qui ont un impact sur son bien-être, ses émotions, son comportement et ses relations.",
     symptoms: "Anxiété • Dépression • Mal-être • Phobies • Manque de confiance en soi • Accidents • Violences conjugales ou familiales • Agressions physiques ou sexuelles • Événements de vie difficiles...",
-    image: "./images/thread-3426388_1920.jpg",
+    image: PourquoiConsulterImg,
     pillars: [
       {
         title: "Écoute bienveillante",
@@ -47,11 +54,11 @@ export const siteContent = {
       "Depuis 2017, la thérapie EMDR m’a permis d’enrichir ma pratique pour le traitement des traumatismes simples et complexes et proposer à chaque personne des solutions adaptées en fonction de ce qu’elle traverse et ce qu’elle souhaite surmonter.",
       "À partir d’une approche intégrative notamment basée sur l’EMDR, le travail thérapeutique vise à débloquer des situations difficiles et vous offrir le choix d’évoluer progressivement vers des changements qui vous conviennent, en découvrant en vous les ressources nécessaires à votre mieux-être."
     ],
-    image: "./images/celine_huard.jpg",
+    image: ApprocheImg,
   },
   emdr: {
     title: "Thérapie EMDR",
-    image: "./images/emdr-therapie.jpg",
+    image: EmdrImg,
     definition: [
       "L’EMDR signifie Eye Movement Desensitization and Reprocessing c’est à dire désensibilisation et retraitement par les mouvements oculaires, c’est une approche psychothérapeutique découverte en 1987 aux Etats-Unis par Francine Shapiro.",
       "Cette thérapie s’adresse à toute personne souffrant de perturbations émotionnelles liées à des traumatismes psychologiques. Il peut s’agir de traumatismes évidents tels que des violences physiques, des abus sexuels, des accidents, des attentats, les situations de guerre… Mais il peut aussi s’agir de traumatismes plus légers ou des évènements de vie difficiles (séparation, difficultés professionnelles, fausse couche…) qui peuvent entraîner des perturbations ou des difficultés dans la vie personnelle ou professionnelle (irritabilité, troubles du sommeil, cauchemars, stress, panique, manque de confiance en soi, phobies…).",
@@ -75,7 +82,7 @@ export const siteContent = {
   },
   parcours: {
     title: "Mon parcours",
-    image: "./images/parcours.jpg",
+    image: ParcoursImg,
     content: [
       "J’exerce comme psychologue clinicienne depuis plus de 25 ans dans des associations de prise en charge de victimes (femmes, hommes, personnes transgenres). Je suis tout particulièrement spécialisée dans la prise en charge des victimes de la Traite à des fins d’exploitation sexuelle.",
       "Mon expérience m’a permis de développer des compétences dans la clinique du trauma et la clinique interculturelle.",
@@ -93,7 +100,7 @@ export const siteContent = {
   },
   infosPratiques: {
     title: "Infos pratiques",
-    image: "./images/typewriter-801921_960_720.jpg",
+    image: InfosPratiquesImg,
     appointment: "Prendre un rendez-vous :\n• En me contactant au 06 86 94 93 99\n• En complétant le formulaire ci-dessous\n\n",
     tarifs: {
       title: "Tarifs et durée",
