@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Link, useLocation, Routes, Route } from 'react-router-dom';
 import Resources from './pages/Resources';
@@ -59,13 +59,23 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden lg:flex space-x-6 items-center">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                className="text-stone-600 hover:text-yellow-700 font-medium text-sm transition-colors"
-              >
-                {link.name}
-              </a>
+              link.href.startsWith('/#') || link.href.startsWith('#') ? (
+                <a 
+                  key={link.name} 
+                  href={link.href}
+                  className="text-stone-600 hover:text-yellow-700 font-medium text-sm transition-colors"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link 
+                  key={link.name} 
+                  to={link.href}
+                  className="text-stone-600 hover:text-yellow-700 font-medium text-sm transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
             <a 
               href="/#contact"
@@ -97,14 +107,25 @@ const Navbar = () => {
         >
           <div className="px-4 pt-2 pb-6 space-y-1">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-3 text-base font-medium text-stone-700 hover:text-yellow-700 hover:bg-stone-50 rounded-md"
-              >
-                {link.name}
-              </a>
+              link.href.startsWith('/#') || link.href.startsWith('#') ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-3 text-base font-medium text-stone-700 hover:text-yellow-700 hover:bg-stone-50 rounded-md"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-3 text-base font-medium text-stone-700 hover:text-yellow-700 hover:bg-stone-50 rounded-md"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
             <a
               href="/#contact"
