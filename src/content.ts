@@ -1,10 +1,9 @@
-const AccueilImg = "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1000&auto=format&fit=crop";
-const PourquoiConsulterImg = "https://images.unsplash.com/photo-1527137342181-19aab11a8ee1?q=80&w=1000&auto=format&fit=crop";
-const ApprocheImg = "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=1000&auto=format&fit=crop";
-const EmdrImg = "https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?q=80&w=1000&auto=format&fit=crop";
-const ParcoursImg = "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1000&auto=format&fit=crop";
-const InfosPratiquesImg = "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1000&auto=format&fit=crop";
-
+import AccueilImg from './assets/images/Accueil.jpg';
+import PourquoiConsulterImg from './assets/images/thread-3426388_1920.jpg';
+import ApprocheImg from './assets/images/celine_huard.jpg';
+import EmdrImg from './assets/images/emdr-therapie.jpg';
+import ParcoursImg from './assets/images/parcours.jpg';
+import InfosPratiquesImg from './assets/images/typewriter-801921_960_720.jpg';
 export const siteContent = {
   global: {
     name: "Céline Huard",
