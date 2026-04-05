@@ -9,21 +9,19 @@ export const siteContent = {
   global: {
     name: "Céline Huard",
     title: "Psychologue Clinicienne",
-    email: "contact@celinehuard-psy.fr",
+    email: "celinehuard@gmail.com",
     phone: "06 86 94 93 99",
     address: "Cabinet de consultation\n111 rue Talma\n94400 Vitry-sur-Seine",
     addressDetails: "Sur rendez-vous uniquement",
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=111+rue+Talma,+94400+Vitry-sur-Seine",
     adeli: "759312622",
     rpps: "10008855685",
-    siret: "844 703 827 00015",
-
-    emdrMember: "Membre de l’association EMDR France",
+    siret: "844 703 827 00015"
   },
   hero: {
     badge: "Consultations sur rendez-vous",
-    title: "Un malheur n’est jamais une fatalité, c’est un traumatisme qui demande à être métamorphosé. » — Boris Cyrulnik.",
-    subtitle: "Psychologue clinicienne depuis 25 ans, je reçois sur rendez-vous des adultes en consultation dans mon cabinet à Vitry-sur-Seine.",
+    title: "Psychologue clinicienne spécialisée en EMDR, j'exerce depuis 25 ans. Je reçois sur rendez-vous des adultes en consultation dans mon cabinet à Vitry-sur-Seine.",
+    subtitle: "Un malheur n’est jamais une fatalité, c’est un traumatisme qui demande à être métamorphosé. » — Boris Cyrulnik.",
     image: AccueilImg,
   },
   pourquoiConsulter: {
@@ -49,7 +47,7 @@ export const siteContent = {
   approche: {
     title: "Mon approche thérapeutique",
     content: [
-      "Mon expérience clinique auprès des victimes de Traite m’a permis de travailler depuis de nombreuses années la question des traumatismes et développer une approche psychologique intégrative. A partir de cette expérience très riche, j’ai souhaité approfondir plus récemment la clinique des traumatismes au travers de mon activité en libéral.",
+      "Mon expérience clinique auprès des victimes de Traite m’a permis de travailler depuis de nombreuses années la question des traumatismes et développer une approche psychologique intégrative. A partir de cette expérience très riche, j’ai souhaité approfondir la clinique des traumatismes au travers de mon activité en libéral.",
       "Je me suis vite rendue compte qu'une seule approche thérapeutique ne permettait pas de répondre à la multiplicité des personnes, des situations, des besoins et des ressources de chacun. C’est pour cela que j’ai progressivement intégré à ma clinique différentes approches et techniques complémentaires (approche psychanalytique, approche victimologique, créativité et art-thérapie, clinique interculturelle, anthropologie médicale clinique, technique d'apaisement et gestion du stress) pour répondre au mieux aux personnes que je rencontrais.",
       "Depuis 2017, la thérapie EMDR m’a permis d’enrichir ma pratique pour le traitement des traumatismes simples et complexes et proposer à chaque personne des solutions adaptées en fonction de ce qu’elle traverse et ce qu’elle souhaite surmonter.",
       "À partir d’une approche intégrative notamment basée sur l’EMDR, le travail thérapeutique vise à débloquer des situations difficiles et vous offrir le choix d’évoluer progressivement vers des changements qui vous conviennent, en découvrant en vous les ressources nécessaires à votre mieux-être."
@@ -89,6 +87,10 @@ export const siteContent = {
       "Dans le cadre de mes activités auprès des victimes de Traite, je suis en charge de la prise en charge psychologique individuelle : entretiens de soutien et thérapies, des ateliers thérapeutiques et groupe de parole.",
       "Je suis par ailleurs responsable des actions de sensibilisation et formation des professionnels du secteur médico-social sur la problématique de la Traite et les conséquences psychotraumatiques, et du pôle d'identification des situations de Traite des Êtres Humains."
     ],
+    associations: [
+      "Membre de l'association EMDR France",
+      "Membre de l'Association Francophone du Trauma et de la Dissociation"
+    ],
     formations: [
       "Formation EMDR à l’Institut Français d’EMDR en 2017",
       "Formation à l’Anthropologie Médicale Clinique (AMC) “Santé, Maladies, soins et cultures” au Centre Minkowska en 2011",
@@ -101,7 +103,7 @@ export const siteContent = {
   infosPratiques: {
     title: "Infos pratiques",
     image: InfosPratiquesImg,
-    appointment: "Prendre un rendez-vous :\n• En me contactant au 06 86 94 93 99\n• En complétant le formulaire ci-dessous\n\n",
+    appointment: "Prendre un rendez-vous en présentiel ou par visioconférence :\n• En me contactant au 06 86 94 93 99\n• En complétant le formulaire ci-dessous\n\n",
     tarifs: {
       title: "Tarifs et durée",
       content: "Les séances durent entre 1h et 1h30, c’est le temps indispensable pour une séance en EMDR.\nLe tarif est de 80 euros."

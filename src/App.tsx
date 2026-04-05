@@ -14,7 +14,8 @@ import {
   ArrowRight,
   CheckCircle2,
   Activity,
-  GraduationCap
+  GraduationCap,
+  BadgeCheck
 } from 'lucide-react';
 import { siteContent } from './content';
 
@@ -127,7 +128,7 @@ const Hero = () => {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-2xl">
+        <div className="max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -136,13 +137,13 @@ const Hero = () => {
             <span className="inline-block py-1 px-3 rounded-full bg-orange-500 text-white text-sm font-medium mb-6 shadow-sm">
               {siteContent.hero.badge}
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-4xl font-serif text-stone-800 leading-relaxed mb-6 italic">
-              « {siteContent.hero.title.replace(/^«\s*|\s*»\s*—.*$/g, '')} »
-              <span className="block text-lg md:text-xl text-stone-600 mt-4 not-italic font-sans">— Boris Cyrulnik</span>
+            <h1 className="text-3xl md:text-4xl lg:text-4xl font-serif text-stone-800 leading-relaxed mb-6">
+              {siteContent.hero.title}
             </h1>
-            <p className="text-lg md:text-xl text-stone-600 mb-8 leading-relaxed">
-              {siteContent.hero.subtitle}
-            </p>
+            <div className="text-lg md:text-xl text-stone-600 mb-8 leading-relaxed">
+              <span className="italic">« {siteContent.hero.subtitle.replace(/^«\s*/, '').replace(/\s*»\s*—.*$/, '').replace(/\s*»\s*-\s*.*$/, '').replace(/\.\s*»$/, '.')} »</span>
+              <span className="block text-base md:text-lg text-stone-500 mt-2 font-sans">— Boris Cyrulnik</span>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="#contact" 
@@ -353,6 +354,21 @@ const Parcours = () => {
             
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100">
               <div className="flex items-center mb-6">
+                <BadgeCheck className="h-6 w-6 text-yellow-600 mr-3" />
+                <h3 className="text-xl font-medium text-stone-800">Associations</h3>
+              </div>
+              <ul className="space-y-4">
+                {siteContent.parcours.associations.map((association, index) => (
+                  <li key={index} className="flex items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 mr-3 flex-shrink-0"></div>
+                    <span className="text-stone-600">{association}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100">
+              <div className="flex items-center mb-6">
                 <GraduationCap className="h-6 w-6 text-yellow-600 mr-3" />
                 <h3 className="text-xl font-medium text-stone-800">Formations</h3>
               </div>
@@ -516,8 +532,6 @@ const Footer = () => {
           <span>N° RPPS : {siteContent.global.rpps}</span>
           <span className="hidden md:inline">•</span>
           <span>N° SIRET : {siteContent.global.siret}</span>
-          <span className="hidden md:inline">•</span>
-          <span>{siteContent.global.emdrMember}</span>
         </div>
         <p>&copy; {new Date().getFullYear()} {siteContent.global.name} - {siteContent.global.title}. Tous droits réservés.</p>
         <div className="mt-4 space-x-4">
