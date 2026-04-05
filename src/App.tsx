@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { Link, useLocation, Routes, Route } from 'react-router-dom';
+import Resources from './pages/Resources';
 import { 
   Phone, 
   Mail, 
@@ -15,13 +17,16 @@ import {
   CheckCircle2,
   Activity,
   GraduationCap,
-  BadgeCheck
+  BadgeCheck,
+  Calendar,
+  Lock
 } from 'lucide-react';
 import { siteContent } from './content';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,26 +37,27 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Accueil', href: '#accueil' },
-    { name: 'Mon Approche', href: '#approche' },
-    { name: 'Thérapie EMDR', href: '#emdr' },
-    { name: 'Mon Parcours', href: '#parcours' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Accueil', href: '/#accueil' },
+    { name: 'Mon Approche', href: '/#approche' },
+    { name: 'Thérapie EMDR', href: '/#emdr' },
+    { name: 'Mon Parcours', href: '/#parcours' },
+    { name: 'Pour aller plus loin', href: '/ressources' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled || location.pathname !== '/' ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0 flex items-center">
-            <a href="#accueil" className="text-2xl font-serif text-yellow-800 font-semibold tracking-tight">
+            <a href="/#accueil" className="text-2xl font-serif text-yellow-800 font-semibold tracking-tight">
               {siteContent.global.name}
               <span className="block text-xs font-sans text-yellow-600/80 uppercase tracking-widest mt-0.5">{siteContent.global.title}</span>
             </a>
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden lg:flex space-x-8 items-center">
+          <div className="hidden lg:flex space-x-6 items-center">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
@@ -62,7 +68,7 @@ const Navbar = () => {
               </a>
             ))}
             <a 
-              href="#contact"
+              href="/#contact"
               className="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm"
             >
               Prendre rendez-vous
@@ -100,10 +106,10 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <a 
-              href="#contact"
+            <a
+              href="/#contact"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center mt-4 bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-3 rounded-md text-base font-medium transition-colors"
+              className="block w-full text-center mt-4 bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-3 rounded-lg text-base font-medium transition-colors"
             >
               Prendre rendez-vous
             </a>
@@ -112,7 +118,7 @@ const Navbar = () => {
       )}
     </nav>
   );
-};
+};;
 
 const Hero = () => {
   return (
@@ -388,7 +394,7 @@ const Parcours = () => {
   );
 };
 
-const Contact = () => {
+const Contact = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
   return (
     <section id="contact" className="py-20 bg-stone-900 text-stone-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -460,9 +466,10 @@ const Contact = () => {
                 const name = formData.get('name');
                 const email = formData.get('email');
                 const phone = formData.get('phone');
+                const consultationType = formData.get('consultationType');
                 const message = formData.get('message');
-                const body = `Nom: ${name}\nEmail: ${email}\nTéléphone: ${phone}\n\nMessage:\n${message}`;
-                window.location.href = `mailto:herwann@gmail.com?subject=Demande de rendez-vous - ${name}&body=${encodeURIComponent(body)}`;
+                const body = `Nom: ${name}\nEmail: ${email}\nTéléphone: ${phone}\nType de consultation: ${consultationType}\n\nMessage:\n${message}`;
+                window.location.href = `mailto:${siteContent.global.email}?subject=Demande de rendez-vous - ${name}&body=${encodeURIComponent(body)}`;
               }}
             >
               <div>
@@ -498,6 +505,17 @@ const Contact = () => {
                 />
               </div>
               <div>
+                <label htmlFor="consultationType" className="block text-sm font-medium text-stone-400 mb-1">Type de consultation</label>
+                <select 
+                  id="consultationType" 
+                  name="consultationType"
+                  className="w-full bg-stone-900 border border-stone-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors appearance-none"
+                >
+                  <option value="En cabinet (Présentiel)">En cabinet (Présentiel)</option>
+                  <option value="En visioconférence (Google Meet)">En visioconférence (Google Meet)</option>
+                </select>
+              </div>
+              <div>
                 <label htmlFor="message" className="block text-sm font-medium text-stone-400 mb-1">Message</label>
                 <textarea 
                   id="message" 
@@ -515,6 +533,26 @@ const Contact = () => {
                 Envoyer la demande <ChevronRight className="ml-2 h-4 w-4" />
               </button>
             </form>
+
+            {/* Pour réactiver la réservation en ligne, passez ENABLE_ONLINE_BOOKING à true */}
+            {false && (
+              <button 
+                onClick={onOpenBooking}
+                className="mt-6 w-full p-4 bg-stone-900/50 border border-stone-700/50 hover:bg-stone-800/80 rounded-xl text-left transition-colors group"
+              >
+                <div className="flex items-start">
+                  <Calendar className="h-5 w-5 text-stone-500 group-hover:text-yellow-500 mr-3 flex-shrink-0 mt-0.5 transition-colors" />
+                  <div>
+                    <strong className="text-stone-300 group-hover:text-white transition-colors flex items-center">
+                      Réservation en ligne <Lock className="h-3 w-3 ml-2 text-stone-500" />
+                    </strong>
+                    <p className="text-sm text-stone-400 mt-1">
+                      Accès privé par mot de passe pour tester l'intégration Google Agenda.
+                    </p>
+                  </div>
+                </div>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -543,19 +581,114 @@ const Footer = () => {
   );
 };
 
+const Home = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
+
+  return (
+    <main>
+      <Hero />
+      <PourquoiConsulter />
+      <Approche />
+      <EMDRSection />
+      <Parcours />
+      <Contact onOpenBooking={onOpenBooking} />
+    </main>
+  );
+};
+
 export default function App() {
+  const [showBooking, setShowBooking] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
+
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === 'emdr2026') {
+      setIsUnlocked(true);
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-stone-50 font-sans selection:bg-yellow-200 selection:text-yellow-900">
       <Navbar />
-      <main>
-        <Hero />
-        <PourquoiConsulter />
-        <Approche />
-        <EMDRSection />
-        <Parcours />
-        <Contact />
-      </main>
+      
+      <Routes>
+        <Route path="/" element={<Home onOpenBooking={() => setShowBooking(true)} />} />
+        <Route path="/ressources" element={<Resources />} />
+      </Routes>
+
       <Footer />
+
+      {showBooking && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl w-full max-w-3xl overflow-hidden shadow-2xl relative">
+            <button 
+              onClick={() => setShowBooking(false)} 
+              className="absolute top-4 right-4 p-2 bg-stone-100 rounded-full hover:bg-stone-200 transition-colors z-10"
+            >
+              <X className="h-5 w-5 text-stone-600" />
+            </button>
+            
+            {!isUnlocked ? (
+              <div className="p-12 text-center">
+                <div className="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Lock className="h-8 w-8 text-stone-400" />
+                </div>
+                <h3 className="text-2xl font-serif text-stone-800 mb-2">Accès restreint</h3>
+                <p className="text-stone-500 mb-8">La réservation en ligne est actuellement en phase de test.</p>
+                <form onSubmit={handleUnlock} className="max-w-xs mx-auto">
+                  <input 
+                    type="password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Mot de passe" 
+                    className="w-full border border-stone-300 rounded-lg px-4 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  />
+                  {error && <p className="text-red-500 text-sm mb-4">Mot de passe incorrect</p>}
+                  <button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                    Accéder au planning
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <div className="h-[600px] w-full bg-stone-50 flex flex-col">
+                <div className="p-6 border-b border-stone-200 bg-white">
+                  <h3 className="text-xl font-serif text-stone-800">Réservation en ligne</h3>
+                  <p className="text-sm text-stone-500">Choisissez votre créneau pour une consultation en cabinet ou en visioconférence.</p>
+                </div>
+                <div className="flex-grow relative w-full h-full">
+                  <iframe 
+                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2g-ov72Q8rj-hEWaO0yKZTzeZsAcHs6_S5K3PPRUi28ERN0ic7zp7idgphyCporptZdv-EYgB0?gv=true" 
+                    style={{ border: 0 }} 
+                    width="100%" 
+                    height="100%" 
+                    frameBorder="0"
+                    title="Réservation Google Agenda"
+                  ></iframe>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
